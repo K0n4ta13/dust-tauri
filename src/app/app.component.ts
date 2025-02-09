@@ -40,4 +40,28 @@ export class AppComponent {
       reader.readAsText(file);
     }
   }
+
+  getTokens(): void {
+    invoke<TokenArray>('tokens', { source: this.value })
+      .then((tokens) => {
+        this.tokens = tokens.map(token => {
+          if (typeof token[0] === "object") {
+            return {
+              type: Object.keys(token[0])[0],
+              value: token[1]
+            };
+          } else {
+            return {
+              type: token[0],
+              value: token[1]
+            };
+          }
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching tokens:", error);
+      });
+
+    console.log(this.tokens);
+  }
 }

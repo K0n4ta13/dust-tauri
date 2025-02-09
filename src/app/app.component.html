@@ -4,6 +4,10 @@
     <h1 class="text-white text-2xl font-semibold">Dust Editor</h1>
     <div class="flex space-x-3">
       <label class="bg-white text-blue-600 px-4 py-2 rounded cursor-pointer shadow hover:bg-blue-100">
+        Token
+        <button (click)="getTokens()" class="hidden"></button>
+      </label>
+      <label class="bg-white text-blue-600 px-4 py-2 rounded cursor-pointer shadow hover:bg-blue-100">
         Seleccionar archivo
         <input type="file" (change)="onFileSelected($event)" class="hidden" />
       </label>
